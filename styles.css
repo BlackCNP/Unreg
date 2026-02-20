@@ -1,0 +1,63 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 20px auto;
+    max-width: 900px;
+    background-color: #f9f9f9;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.filter-container {
+    margin-bottom: 20px;
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+select {
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+th, td {
+    border: 1px solid #e0e0e0;
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+/* Кольори для цілих рядків залежно від статусу */
+tr[data-status="red"] {
+    background-color: #ffcccc; /* Світло-червоний */
+}
+
+tr[data-status="yellow"] {
+    background-color: #fff4cc; /* Світло-жовтий */
+}
+
+tr[data-status="green"] {
+    background-color: #ccffcc; /* Світло-зелений */
+}
+
+/* Приховати рядки при використанні фільтра */
+.hidden {
+    display: none;
+}

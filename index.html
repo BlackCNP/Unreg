@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script> 
+</head>
+<body>
+    <h1>Таблиця неправильних дієслів</h1>
+
+    <div class="filter-container">
+        <label for="statusFilter"><strong>Фільтр за кольором:</strong></label>
+        <select id="statusFilter">
+            <option value="all">Показати всі</option>
+            <option value="none">Без кольору</option>
+            <option value="red">Не вивчив (Червоні)</option>
+            <option value="yellow">Треба повторити (Жовті)</option>
+            <option value="green">Вивчив (Зелені)</option>
+        </select>
+    </div>
+
+    <table id="verbsTable">
+        <thead>
+            <tr>
+                <th>1 форма (Infinitive)</th>
+                <th>2 форма (Past Simple)</th>
+                <th>3 форма (Past Participle)</th>
+                <th>Переклад</th>
+                <th>Статус вивчення</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr data-verb-id="be" data-status="none">
+                <td>be</td>
+                <td>was / were</td>
+                <td>been</td>
+                <td>бути</td>
+                <td>
+                    <select class="status-select">
+                        <option value="none">Без кольору</option>
+                        <option value="red" class="opt-red">🔴 Не вивчив</option>
+                        <option value="yellow" class="opt-yellow">🟡 Повторити</option>
+                        <option value="green" class="opt-green">🟢 Вивчив</option>
+                    </select>
+                </td>
+            </tr>
+            <tr data-verb-id="do" data-status="none">
+    <td>do</td>
+    <td>did</td>
+    <td>done</td>
+    <td>робити</td>
+    <td>
+        <select class="status-select">
+            <option value="none">Без кольору</option>
+            <option value="red">🔴 Не вивчив</option>
+            <option value="yellow">🟡 Повторити</option>
+            <option value="green">🟢 Вивчив</option>
+        </select>
+    </td>
+</tr>
+            </tbody>
+    </table>
+</body>
+</html>
