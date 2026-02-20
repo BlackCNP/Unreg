@@ -1,52 +1,61 @@
 document.addEventListener('DOMContentLoaded', () => {
     const filter = document.getElementById('statusFilter');
-    const rows = document.querySelectorAll('#verbsTable tbody tr');
-    
-    // Завантажуємо прогрес із пам'яті браузера
+    const tbody = document.querySelector('#verbsTable tbody');
     const savedStatuses = JSON.parse(localStorage.getItem('verbProgress')) || {};
 
-    // Функція, яка ховає/показує рядки (фільтрація)
-    function applyFilter() {
-        const filterValue = filter.value;
-        rows.forEach(row => {
-            const rowStatus = row.getAttribute('data-status');
-            if (filterValue === 'all' || filterValue === rowStatus) {
-                row.classList.remove('hidden');
-            } else {
-                row.classList.add('hidden');
+    // Функція сортування
+    function applySort() {
+        const rows = Array.from(tbody.querySelectorAll('tr'));
+        const priorityColor = filter.value; // Колір, який хочемо бачити першим
+
+        // Вага кольорів для стандартного сортування
+        const weights = { 'green': 3, 'yellow': 2, 'red': 1 };
+
+        rows.sort((a, b) => {
+            const statusA = a.getAttribute('data-status');
+            const statusB = b.getAttribute('data-status');
+
+            // Якщо обрано конкретний колір у фільтрі - він отримує найвищий пріоритет
+            if (priorityColor !== 'all') {
+                if (statusA === priorityColor && statusB !== priorityColor) return -1;
+                if (statusB === priorityColor && statusA !== priorityColor) return 1;
             }
+
+            // В іншому випадку сортуємо: Зелені -> Жовті -> Червоні
+            return weights[statusB] - weights[statusA];
         });
+
+        // Перемальовуємо таблицю в новому порядку
+        rows.forEach(row => tbody.appendChild(row));
     }
 
-    rows.forEach(row => {
+    // Налаштування кожного рядка
+    const initRows = tbody.querySelectorAll('tr');
+    initRows.forEach(row => {
         const verbId = row.getAttribute('data-verb-id');
         const select = row.querySelector('.status-select');
 
-        // 1. Встановлюємо збережений колір при завантаженні
-        if (savedStatuses[verbId]) {
-            row.setAttribute('data-status', savedStatuses[verbId]);
-            select.value = savedStatuses[verbId];
-        }
+        // Відновлюємо статус або ставимо 'red' (червоний) за замовчуванням
+        const currentStatus = savedStatuses[verbId] || 'red';
+        row.setAttribute('data-status', currentStatus);
+        select.value = currentStatus;
 
-        // 2. Зміна кольору при виборі в селекті
         select.addEventListener('change', (e) => {
             const newStatus = e.target.value;
-            
-            // ОНОВЛЮЄМО АТРИБУТ (це змусить CSS спрацювати)
             row.setAttribute('data-status', newStatus);
-
-            // Зберігаємо в пам'ять
+            
+            // Зберігаємо
             savedStatuses[verbId] = newStatus;
             localStorage.setItem('verbProgress', JSON.stringify(savedStatuses));
             
-            // Якщо увімкнено фільтр, рядок може зникнути, якщо колір не підходить
-            applyFilter();
+            // Після зміни статусу — пересортовуємо таблицю
+            applySort();
         });
     });
 
-    // 3. Слухаємо зміни головного фільтра
-    filter.addEventListener('change', applyFilter);
+    // Слухач для зміни головного пріоритету
+    filter.addEventListener('change', applySort);
 
-    // 4. Запускаємо фільтр одразу (щоб при завантаженні все було чисто)
-    applyFilter();
+    // Сортуємо одразу при завантаженні
+    applySort();
 });
