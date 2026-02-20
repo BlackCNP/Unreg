@@ -1,59 +1,448 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Неправильні дієслова</title>
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script> 
 </head>
 <body>
-    <h1>Таблиця неправильних дієслів</h1>
+    <h1>Мій прогрес дієслів 💥</h1>
 
     <div class="filter-container">
-        <label for="statusFilter"><strong>Фільтр за кольором:</strong></label>
+        <label for="statusFilter"><strong>Пріоритет зверху:</strong></label>
         <select id="statusFilter">
-            <option value="all">Показати всі</option>
-            <option value="none">Без кольору</option>
-            <option value="red">Не вивчив (Червоні)</option>
-            <option value="yellow">Треба повторити (Жовті)</option>
-            <option value="green">Вивчив (Зелені)</option>
+            <option value="all">За стандартом (Зелені -> Жовті -> Червоні)</option>
+            <option value="red">Спочатку не вивчені (Червоні)</option>
+            <option value="yellow">Спочатку на повторення (Жовті)</option>
+            <option value="green">Спочатку вивчені (Зелені)</option>
         </select>
     </div>
 
-    <table id="verbsTable">
-        <thead>
-            <tr>
-                <th>1 форма (Infinitive)</th>
-                <th>2 форма (Past Simple)</th>
-                <th>3 форма (Past Participle)</th>
-                <th>Переклад</th>
-                <th>Статус вивчення</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr data-verb-id="be" data-status="none">
-                <td>be</td>
-                <td>was / were</td>
-                <td>been</td>
-                <td>бути</td>
-                <td>
-                    <select class="status-select">
-                        <option value="none">Без кольору</option>
-                        <option value="red" class="opt-red">🔴 Не вивчив</option>
-                        <option value="yellow" class="opt-yellow">🟡 Повторити</option>
-                        <option value="green" class="opt-green">🟢 Вивчив</option>
-                    </select>
-                </td>
-            </tr>
-            <tr data-verb-id="do" data-status="none">
-    <td>do</td>
-    <td>did</td>
-    <td>done</td>
-    <td>робити</td>
+    <div class="table-responsive">
+        <table id="verbsTable">
+            <thead>
+                <tr>
+                    <th>V1</th>
+                    <th>V2</th>
+                    <th>V3</th>
+                    <th>Переклад</th>
+                    <th>Статус</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-verb-id="gehen" data-status="red">
+    <td>gehen</td>
+    <td>ging</td>
+    <td>ist gegangen</td>
+    <td>йти</td>
     <td>
         <select class="status-select">
-            <option value="none">Без кольору</option>
+            <option value="red">🔴 Не вивчив</option>
+            <option value="yellow">🟡 Повторити</option>
+            <option value="green">🟢 Вивчив</option>
+        </select>
+    </td>
+</tr>
+
+<tr data-verb-id="kommen" data-status="red">
+    <td>kommen</td>
+    <td>kam</td>
+    <td>ist gekommen</td>
+    <td>приходити</td>
+    <td>
+        <select class="status-select">
+            <option value="red">🔴 Не вивчив</option>
+            <option value="yellow">🟡 Повторити</option>
+            <option value="green">🟢 Вивчив</option>
+        </select>
+    </td>
+</tr>
+
+<tr data-verb-id="sehen" data-status="red">
+    <td>sehen</td>
+    <td>sah</td>
+    <td>hat gesehen</td>
+    <td>бачити</td>
+    <td>
+        <select class="status-select">
+            <option value="red">🔴 Не вивчив</option>
+            <option value="yellow">🟡 Повторити</option>
+            <option value="green">🟢 Вивчив</option>
+        </select>
+    </td>
+</tr>
+
+<tr data-verb-id="geben" data-status="red">
+    <td>geben</td>
+    <td>gab</td>
+    <td>hat gegeben</td>
+    <td>давати</td>
+    <td>
+        <select class="status-select">
+            <option value="red">🔴 Не вивчив</option>
+            <option value="yellow">🟡 Повторити</option>
+            <option value="green">🟢 Вивчив</option>
+        </select>
+    </td>
+</tr>
+
+<tr data-verb-id="nehmen" data-status="red">
+    <td>nehmen</td>
+    <td>nahm</td>
+    <td>hat genommen</td>
+    <td>брати</td>
+    <td>
+        <select class="status-select">
+            <option value="red">🔴 Не вивчив</option>
+            <option value="yellow">🟡 Повторити</option>
+            <option value="green">🟢 Вивчив</option>
+        </select>
+    </td>
+</tr>
+
+<tr data-verb-id="finden" data-status="red">
+    <td>finden</td>
+    <td>fand</td>
+    <td>hat gefunden</td>
+    <td>знаходити</td>
+    <td>
+        <select class="status-select">
+            <option value="red">🔴 Не вивчив</option>
+            <option value="yellow">🟡 Повторити</option>
+            <option value="green">🟢 Вивчив</option>
+        </select>
+    </td>
+</tr>
+
+<tr data-verb-id="sprechen" data-status="red">
+    <td>sprechen</td>
+    <td>sprach</td>
+    <td>hat gesprochen</td>
+    <td>говорити</td>
+    <td>
+        <select class="status-select">
+            <option value="red">🔴 Не вивчив</option>
+            <option value="yellow">🟡 Повторити</option>
+            <option value="green">🟢 Вивчив</option>
+        </select>
+    </td>
+</tr>
+
+<tr data-verb-id="fahren" data-status="red">
+    <td>fahren</td>
+    <td>fuhr</td>
+    <td>ist gefahren</td>
+    <td>їхати</td>
+    <td>
+        <select class="status-select">
+            <option value="red">🔴 Не вивчив</option>
+            <option value="yellow">🟡 Повторити</option>
+            <option value="green">🟢 Вивчив</option>
+        </select>
+    </td>
+</tr>
+
+<tr data-verb-id="essen" data-status="red">
+    <td>essen</td>
+    <td>aß</td>
+    <td>hat gegessen</td>
+    <td>їсти</td>
+    <td>
+        <select class="status-select">
+            <option value="red">🔴 Не вивчив</option>
+            <option value="yellow">🟡 Повторити</option>
+            <option value="green">🟢 Вивчив</option>
+        </select>
+    </td>
+</tr>
+
+<tr data-verb-id="trinken" data-status="red">
+    <td>trinken</td>
+    <td>trank</td>
+    <td>hat getrunken</td>
+    <td>пити</td>
+    <td>
+        <select class="status-select">
+            <option value="red">🔴 Не вивчив</option>
+            <option value="yellow">🟡 Повторити</option>
+            <option value="green">🟢 Вивчив</option>
+        </select>
+    </td>
+</tr>   
+<tr data-verb-id="bleiben" data-status="red">
+    <td>bleiben</td>
+    <td>blieb</td>
+    <td>ist geblieben</td>
+    <td>залишатися</td>
+    <td>
+        <select class="status-select">
+            <option value="red">🔴 Не вивчив</option>
+            <option value="yellow">🟡 Повторити</option>
+            <option value="green">🟢 Вивчив</option>
+        </select>
+    </td>
+</tr>
+
+<tr data-verb-id="werden" data-status="red">
+    <td>werden</td>
+    <td>wurde</td>
+    <td>ist geworden</td>
+    <td>ставати</td>
+    <td>
+        <select class="status-select">
+            <option value="red">🔴 Не вивчив</option>
+            <option value="yellow">🟡 Повторити</option>
+            <option value="green">🟢 Вивчив</option>
+        </select>
+    </td>
+</tr>
+
+<tr data-verb-id="laufen" data-status="red">
+    <td>laufen</td>
+    <td>lief</td>
+    <td>ist gelaufen</td>
+    <td>бігти</td>
+    <td>
+        <select class="status-select">
+            <option value="red">🔴 Не вивчив</option>
+            <option value="yellow">🟡 Повторити</option>
+            <option value="green">🟢 Вивчив</option>
+        </select>
+    </td>
+</tr>
+
+<tr data-verb-id="bringen" data-status="red">
+    <td>bringen</td>
+    <td>brachte</td>
+    <td>hat gebracht</td>
+    <td>приносити</td>
+    <td>
+        <select class="status-select">
+            <option value="red">🔴 Не вивчив</option>
+            <option value="yellow">🟡 Повторити</option>
+            <option value="green">🟢 Вивчив</option>
+        </select>
+    </td>
+</tr>
+
+<tr data-verb-id="denken" data-status="red">
+    <td>denken</td>
+    <td>dachte</td>
+    <td>hat gedacht</td>
+    <td>думати</td>
+    <td>
+        <select class="status-select">
+            <option value="red">🔴 Не вивчив</option>
+            <option value="yellow">🟡 Повторити</option>
+            <option value="green">🟢 Вивчив</option>
+        </select>
+    </td>
+</tr>
+
+<tr data-verb-id="finden" data-status="red">
+    <td>finden</td>
+    <td>fand</td>
+    <td>hat gefunden</td>
+    <td>знаходити</td>
+    <td>
+        <select class="status-select">
+            <option value="red">🔴 Не вивчив</option>
+            <option value="yellow">🟡 Повторити</option>
+            <option value="green">🟢 Вивчив</option>
+        </select>
+    </td>
+</tr>
+
+<tr data-verb-id="helfen" data-status="red">
+    <td>helfen</td>
+    <td>half</td>
+    <td>hat geholfen</td>
+    <td>допомагати</td>
+    <td>
+        <select class="status-select">
+            <option value="red">🔴 Не вивчив</option>
+            <option value="yellow">🟡 Повторити</option>
+            <option value="green">🟢 Вивчив</option>
+        </select>
+    </td>
+</tr>
+
+<tr data-verb-id="schlafen" data-status="red">
+    <td>schlafen</td>
+    <td>schlief</td>
+    <td>hat geschlafen</td>
+    <td>спати</td>
+    <td>
+        <select class="status-select">
+            <option value="red">🔴 Не вивчив</option>
+            <option value="yellow">🟡 Повторити</option>
+            <option value="green">🟢 Вивчив</option>
+        </select>
+    </td>
+</tr>
+
+<tr data-verb-id="lesen" data-status="red">
+    <td>lesen</td>
+    <td>las</td>
+    <td>hat gelesen</td>
+    <td>читати</td>
+    <td>
+        <select class="status-select">
+            <option value="red">🔴 Не вивчив</option>
+            <option value="yellow">🟡 Повторити</option>
+            <option value="green">🟢 Вивчив</option>
+        </select>
+    </td>
+</tr>
+
+<tr data-verb-id="sehen" data-status="red">
+    <td>sehen</td>
+    <td>sah</td>
+    <td>hat gesehen</td>
+    <td>бачити</td>
+    <td>
+        <select class="status-select">
+            <option value="red">🔴 Не вивчив</option>
+            <option value="yellow">🟡 Повторити</option>
+            <option value="green">🟢 Вивчив</option>
+        </select>
+    </td>
+</tr>
+<tr data-verb-id="anfangen" data-status="red">
+    <td>anfangen</td>
+    <td>fing an</td>
+    <td>hat angefangen</td>
+    <td>починати</td>
+    <td>
+        <select class="status-select">
+            <option value="red">🔴 Не вивчив</option>
+            <option value="yellow">🟡 Повторити</option>
+            <option value="green">🟢 Вивчив</option>
+        </select>
+    </td>
+</tr>
+
+<tr data-verb-id="ankommen" data-status="red">
+    <td>ankommen</td>
+    <td>kam an</td>
+    <td>ist angekommen</td>
+    <td>прибувати</td>
+    <td>
+        <select class="status-select">
+            <option value="red">🔴 Не вивчив</option>
+            <option value="yellow">🟡 Повторити</option>
+            <option value="green">🟢 Вивчив</option>
+        </select>
+    </td>
+</tr>
+
+<tr data-verb-id="aufstehen" data-status="red">
+    <td>aufstehen</td>
+    <td>stand auf</td>
+    <td>ist aufgestanden</td>
+    <td>вставати</td>
+    <td>
+        <select class="status-select">
+            <option value="red">🔴 Не вивчив</option>
+            <option value="yellow">🟡 Повторити</option>
+            <option value="green">🟢 Вивчив</option>
+        </select>
+    </td>
+</tr>
+
+<tr data-verb-id="fallen" data-status="red">
+    <td>fallen</td>
+    <td>fiel</td>
+    <td>ist gefallen</td>
+    <td>падати</td>
+    <td>
+        <select class="status-select">
+            <option value="red">🔴 Не вивчив</option>
+            <option value="yellow">🟡 Повторити</option>
+            <option value="green">🟢 Вивчив</option>
+        </select>
+    </td>
+</tr>
+
+<tr data-verb-id="halten" data-status="red">
+    <td>halten</td>
+    <td>hielt</td>
+    <td>hat gehalten</td>
+    <td>тримати</td>
+    <td>
+        <select class="status-select">
+            <option value="red">🔴 Не вивчив</option>
+            <option value="yellow">🟡 Повторити</option>
+            <option value="green">🟢 Вивчив</option>
+        </select>
+    </td>
+</tr>
+
+<tr data-verb-id="heißen" data-status="red">
+    <td>heißen</td>
+    <td>hieß</td>
+    <td>hat geheißen</td>
+    <td>називатися</td>
+    <td>
+        <select class="status-select">
+            <option value="red">🔴 Не вивчив</option>
+            <option value="yellow">🟡 Повторити</option>
+            <option value="green">🟢 Вивчив</option>
+        </select>
+    </td>
+</tr>
+
+<tr data-verb-id="lassen" data-status="red">
+    <td>lassen</td>
+    <td>ließ</td>
+    <td>hat gelassen</td>
+    <td>дозволяти / залишати</td>
+    <td>
+        <select class="status-select">
+            <option value="red">🔴 Не вивчив</option>
+            <option value="yellow">🟡 Повторити</option>
+            <option value="green">🟢 Вивчив</option>
+        </select>
+    </td>
+</tr>
+
+<tr data-verb-id="rufen" data-status="red">
+    <td>rufen</td>
+    <td>rief</td>
+    <td>hat gerufen</td>
+    <td>кликати</td>
+    <td>
+        <select class="status-select">
+            <option value="red">🔴 Не вивчив</option>
+            <option value="yellow">🟡 Повторити</option>
+            <option value="green">🟢 Вивчив</option>
+        </select>
+    </td>
+</tr>
+
+<tr data-verb-id="schreiben" data-status="red">
+    <td>schreiben</td>
+    <td>schrieb</td>
+    <td>hat geschrieben</td>
+    <td>писати</td>
+    <td>
+        <select class="status-select">
+            <option value="red">🔴 Не вивчив</option>
+            <option value="yellow">🟡 Повторити</option>
+            <option value="green">🟢 Вивчив</option>
+        </select>
+    </td>
+</tr>
+
+<tr data-verb-id="ziehen" data-status="red">
+    <td>ziehen</td>
+    <td>zog</td>
+    <td>ist gezogen</td>
+    <td>тягнути / переїжджати</td>
+    <td>
+        <select class="status-select">
             <option value="red">🔴 Не вивчив</option>
             <option value="yellow">🟡 Повторити</option>
             <option value="green">🟢 Вивчив</option>
@@ -61,6 +450,7 @@
     </td>
 </tr>
             </tbody>
-    </table>
+        </table>
+    </div>
 </body>
 </html>
