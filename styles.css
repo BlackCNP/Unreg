@@ -1,6 +1,6 @@
 body {
     font-family: 'Segoe UI', sans-serif;
-    margin: 10px;
+    margin: 2px;
     background-color: #f4f4f4;
 }
 
@@ -65,4 +65,5 @@ select {
     th, td { padding: 8px 4px; font-size: 12px; }
     h1 { font-size: 1.2rem; }
 }
+
 
