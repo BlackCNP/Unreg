@@ -1,112 +1,143 @@
 body {
-    font-family: 'Segoe UI', sans-serif;
-    margin: 10px;
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    margin: 0; /* Прибрав відступи по краях для мобілок */
+    padding: 10px;
     background-color: #f4f4f4;
+    -webkit-tap-highlight-color: transparent; /* Прибирає синій відблиск при натисканні */
 }
 
 h1 { 
     text-align: center; 
-    font-size: 1.5rem; 
-    margin-top: 20px;
+    font-size: 1.4rem; 
+    margin: 20px 0;
+    color: #333;
 }
 
-/* Фільтр, який завжди зверху */
+/* Фільтр: на мобільних він тепер компактніший */
 .filter-container {
     position: sticky;
     top: 0;
     z-index: 1000;
     background: #ffffff;
-    padding: 15px;
-    margin-bottom: 20px;
-    border-bottom: 2px solid #4CAF50;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    padding: 12px;
+    margin-bottom: 15px;
+    border-bottom: 3px solid #4CAF50;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
+    flex-direction: column; /* На мобілках текст і селект один під одним */
+    align-items: flex-start;
+    gap: 8px;
+    border-radius: 8px;
 }
 
-/* Адаптивність таблиці */
+@media (min-width: 600px) {
+    .filter-container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+/* Таблиця */
 .table-responsive {
-    overflow-x: auto; /* Дозволяє гортати таблицю вбік на телефонах */
-    -webkit-overflow-scrolling: touch;
+    overflow-x: auto;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    min-width: 500px; /* Щоб стовпчики не злипалися зовсім дрібно */
+    min-width: 450px; /* Трохи зменшив, щоб менше скролити вбік */
     background: #fff;
 }
 
 th, td {
-    border: 1px solid #ddd;
-    padding: 10px 5px;
+    border: 1px solid #eee;
+    padding: 12px 6px; /* Збільшив для зручності дотику */
     text-align: center;
-    font-size: 14px;
+    font-size: 13px;
 }
 
-th { background-color: #4CAF50; color: white; }
-
-/* Кольори рядків */
-tr[data-status="red"] { background-color: #ffcccc; }
-tr[data-status="yellow"] { background-color: #fff4cc; }
-tr[data-status="green"] { background-color: #ccffcc; }
-
-select {
-    padding: 5px;
-    border-radius: 4px;
-    max-width: 100%;
+th { 
+    background-color: #4CAF50; 
+    color: white; 
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 0.5px;
 }
 
-/* Налаштування для маленьких екранів */
-@media (max-width: 600px) {
-    th, td { padding: 8px 4px; font-size: 12px; }
-    h1 { font-size: 1.2rem; }
+/* Статус-селект став більшим для пальців */
+.status-select {
+    padding: 8px 4px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 13px;
+    background-color: #fff;
+    width: 100%;
+    max-width: 120px;
 }
+
+/* Кольори рядків (трохи м'якші) */
+tr[data-status="red"] { background-color: #fff1f1; }
+tr[data-status="yellow"] { background-color: #fffbea; }
+tr[data-status="green"] { background-color: #f2fff2; }
+
+/* Кнопка "Нагору" */
 #myBtn {
-  display: none; /* Hidden by default */
-  position: fixed; /* Fixed/sticky position */
-  bottom: 20px; /* Place the button at the bottom of the page */
-  right: 30px; /* Place the button 30px from the right */
-  z-index: 99; /* Make sure it does not overlap */
-  border: none; /* Remove borders */
-  outline: none; /* Remove outline */
-  background-color: red; /* Set a background color */
-  color: white; /* Text color */
-  cursor: pointer; /* Add a mouse pointer on hover */
-  padding: 15px; /* Some padding */
-  border-radius: 10px; /* Rounded corners */
-  font-size: 18px; /* Increase font size */
+    display: none;
+    position: fixed;
+    bottom: 25px;
+    right: 20px;
+    z-index: 99;
+    border: none;
+    background-color: #4CAF50; /* Змінив на зелений під стиль */
+    color: white;
+    cursor: pointer;
+    padding: 12px 16px;
+    border-radius: 50%; /* Кругла кнопка краща для мобілок */
+    font-size: 16px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
-#myBtn:hover {
-  background-color: #555; /* Add a dark-grey background on hover */
-}
-
-/* розверт*/
-
+/* Акордеони (секції) */
 .accordion {
-  background-color: #8c09a7;
-  color: #efefef;
-  cursor: pointer;
-  padding: 18px;
-  width: 100%;
-  border: none;
-  text-align: left;
-  outline: none;
-  font-size: 15px;
-  transition: 0.4s;
+    background-color: #8c09a7;
+    color: #ffffff;
+    padding: 16px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.active, .accordion:hover {
-  background-color: #ccc; 
+.accordion::after {
+    content: '\002B'; /* Символ плюса */
+    font-size: 20px;
+}
+
+.active::after {
+    content: "\2212"; /* Символ мінуса */
 }
 
 .panel {
-  padding: 0 18px;
-  display: none;
-  background-color: white;
-  overflow: hidden;
+    padding: 10px;
+    display: none;
+    background-color: white;
+    border-radius: 0 0 8px 8px;
+    border: 1px solid #ddd;
+    border-top: none;
+    overflow-x: auto;
+}
+
+/* Оптимізація під дуже малі екрани */
+@media (max-width: 400px) {
+    th, td { font-size: 12px; padding: 10px 4px; }
+    .status-select { font-size: 11px; }
 }
